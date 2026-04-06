@@ -60,7 +60,7 @@ async def call_openrouter(user_text: str) -> str:
 async def command_start_handler(message: Message) -> None:
     await message.answer(
         f"Привет, {html.bold(message.from_user.full_name or 'друг')}! "
-        "Напиши сообщение — отвечу через модель OpenRouter."
+        "Подскажи чем могу помочь?"
     )
 
 
