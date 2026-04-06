@@ -19,7 +19,7 @@ OPENROUTER_API_KEY = getenv("OPENROUTER_API_KEY")
 MODEL = getenv("MODEL", "anthropic/claude-sonnet-4")
 SYSTEM_PROMPT = getenv(
     "SYSTEM_PROMPT",
-    "Ты дружелюбный помощник. Отвечай кратко и по делу на русском языке.",
+    "Ты советник по туризму b2b компании centrum air. Твоя задача отвечть по существу тур-агентам по запросам на туры. Если ты не владеешь информацией, говоришь что перенаправишь вопрос b2b менеджеру",
 )
 
 dp = Dispatcher()
