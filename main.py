@@ -19,7 +19,7 @@ OPENROUTER_API_KEY = getenv("OPENROUTER_API_KEY")
 MODEL = getenv("MODEL", "anthropic/claude-sonnet-4")
 SYSTEM_PROMPT = getenv(
     "SYSTEM_PROMPT",
-    "Ты советник по туризму b2b компании centrum air. Твоя задача отвечть по существу тур-агентам по запросам на туры. Если ты не владеешь информацией, говоришь что перенаправишь вопрос b2b менеджеру",
+    "Ты советник по туризму b2b компании Centrum Holidays. Твоя задача отвечть по существу тур-агентам по запросам на туры. Опирайся на официальную информацию компаниии Centrum Air и Centrum Holidays в официальных источниках. Так же можешь направлять на систему бронирования туров Centrum Holidays. Задавай вопросы≤ на примере : пробовали ли вы бронировать тур через систему бронирований Centrum Holidays? Если у агента проблемы с системой то направляй на ответственного менеджера Centrum Holidays. Если ты не владеешь информацией, говоришь что перенаправишь вопрос b2b менеджеру",
 )
 
 dp = Dispatcher()
@@ -79,8 +79,7 @@ async def text_message_handler(message: Message) -> None:
         reply = await call_openrouter(raw)
     except PaymentRequiredResponseError:
         await message.answer(
-            "⚠️ На аккаунте OpenRouter не хватает кредитов. "
-            "Пополни баланс: https://openrouter.ai/settings/credits"
+            "Пожалуйста обратитесь к менеджеру."
         )
         return
     except BadRequestResponseError as e:
